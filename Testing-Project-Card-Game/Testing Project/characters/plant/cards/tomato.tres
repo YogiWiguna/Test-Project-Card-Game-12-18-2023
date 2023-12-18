@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://dus2oxej8v8q4"]
+
+[ext_resource type="Script" path="res://custom_resource/card.gd" id="1_1ohfd"]
+[ext_resource type="Texture2D" uid="uid://dlfiupvtjw7y8" path="res://Assets/Cards/plant/plant_3.png" id="1_15bi3"]
+
+[resource]
+script = ExtResource("1_1ohfd")
+id = "plant_evolve"
+type = 1
+target = 1
+target2 = 3
+cost = 1
+image = ExtResource("1_15bi3")
+tooltip_text = "Tomato Plant"

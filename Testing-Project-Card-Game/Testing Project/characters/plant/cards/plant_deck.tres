@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Card" load_steps=7 format=3 uid="uid://cmq7hdg3flcbo"]
+
+[ext_resource type="Texture2D" uid="uid://v1385jvsam8d" path="res://Assets/Cards/plant/plant_0.png" id="1_8thnt"]
+[ext_resource type="Script" path="res://custom_resource/card.gd" id="1_q4oxp"]
+[ext_resource type="Texture2D" uid="uid://dyjgpqmfudjw8" path="res://Assets/Cards/plant/plant_1.png" id="2_30ciq"]
+[ext_resource type="Texture2D" uid="uid://ehmwnpl4062" path="res://Assets/Cards/plant/plant_2.png" id="3_rqj5j"]
+[ext_resource type="Texture2D" uid="uid://dlfiupvtjw7y8" path="res://Assets/Cards/plant/plant_3.png" id="4_ihutl"]
+[ext_resource type="Texture2D" uid="uid://du1io0cuj67u6" path="res://Assets/Cards/plant/plant_4.png" id="5_rs8ym"]
+
+[resource]
+script = ExtResource("1_q4oxp")
+id = "plant"
+type = 1
+target = 0
+target2 = 3
+cost = 1
+image = Array[Texture]([ExtResource("1_8thnt"), ExtResource("2_30ciq"), ExtResource("3_rqj5j"), ExtResource("4_ihutl"), ExtResource("5_rs8ym")])
+tooltip_text = ""

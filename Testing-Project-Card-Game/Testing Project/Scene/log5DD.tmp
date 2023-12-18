@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://jgvts37qkrny"]
+
+[ext_resource type="Script" path="res://Scene/login_manager.gd" id="1_ft7hy"]
+[ext_resource type="PackedScene" uid="uid://bchfhycqw8cc1" path="res://Scene/Login_Scene/login_menu.tscn" id="1_r3n2h"]
+[ext_resource type="PackedScene" uid="uid://dk3nu1ksv0pta" path="res://Scene/Info/Info.tscn" id="2_850ck"]
+[ext_resource type="PackedScene" uid="uid://chscteuxys6h3" path="res://Scene/Setting/setting.tscn" id="4_ftv64"]
+[ext_resource type="PackedScene" uid="uid://ctyrf5a6c44br" path="res://Scene/Login_Scene/login_input.tscn" id="5_1oh01"]
+[ext_resource type="PackedScene" uid="uid://cppr2wr5cwny1" path="res://Scene/Register/register.tscn" id="6_1kinr"]
+
+[node name="login_manager" type="Node"]
+script = ExtResource("1_ft7hy")
+
+[node name="Login_Menu" parent="." instance=ExtResource("1_r3n2h")]
+
+[node name="Info_Canvas" type="CanvasLayer" parent="."]
+
+[node name="Info" parent="Info_Canvas" instance=ExtResource("2_850ck")]
+visible = false
+
+[node name="Setting_Canvas" type="CanvasLayer" parent="."]
+
+[node name="Setting" parent="Setting_Canvas" instance=ExtResource("4_ftv64")]
+visible = false
+
+[node name="Login_Input" parent="." instance=ExtResource("5_1oh01")]
+visible = false
+
+[node name="register_Input" parent="." instance=ExtResource("6_1kinr")]
+visible = false

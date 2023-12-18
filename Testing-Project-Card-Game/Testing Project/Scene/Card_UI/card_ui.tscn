@@ -1,0 +1,163 @@
+[gd_scene load_steps=12 format=3 uid="uid://dx1rtetervop4"]
+
+[ext_resource type="Script" path="res://Scene/Card_UI/card_ui.gd" id="1_7jduf"]
+[ext_resource type="StyleBox" uid="uid://dpo1hi2ji6k0j" path="res://Scene/Card_UI/card_base_stylebox.tres" id="2_bog7x"]
+[ext_resource type="Texture2D" uid="uid://so8ep3gpmucd" path="res://Assets/Cards/seed/seed_0.png" id="2_g00ei"]
+[ext_resource type="Script" path="res://Scene/Card_UI/card_state_machine.gd" id="2_oguvm"]
+[ext_resource type="Script" path="res://Scene/Card_UI/card_states/card_base_state.gd" id="3_bo8ci"]
+[ext_resource type="Script" path="res://Scene/Card_UI/card_states/card_clicked_state.gd" id="4_pfccq"]
+[ext_resource type="Script" path="res://Scene/Card_UI/card_states/card_dragging_state.gd" id="5_fsj21"]
+[ext_resource type="Script" path="res://Scene/Card_UI/card_states/card_released_state.gd" id="6_04ofv"]
+[ext_resource type="Script" path="res://Scene/Card_UI/card_states/card_aiming_state.gd" id="8_22bd3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f44i"]
+atlas = ExtResource("2_g00ei")
+region = Rect2(0, 0, 640, 960)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ljpp"]
+size = Vector2(150.719, 209.75)
+
+[node name="CardUI" type="Control"]
+z_as_relative = false
+custom_minimum_size = Vector2(150, 210)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1770.0
+offset_bottom = -870.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+script = ExtResource("1_7jduf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_bog7x")
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_g00ei")
+expand_mode = 1
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 1
+offset_left = 2.0
+offset_right = 12.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card_Base" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -105.0
+offset_right = 75.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_6f44i")
+expand_mode = 1
+
+[node name="Color" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0392157, 0.329412, 0.223529, 1)
+
+[node name="State" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.5
+offset_top = -73.5
+offset_right = 121.5
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "State"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 141.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Bean"
+
+[node name="DropPointDetector" type="Area2D" parent="."]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
+visible = false
+position = Vector2(74.6406, 105.125)
+shape = SubResource("RectangleShape2D_7ljpp")
+
+[node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_oguvm")
+initial_state = NodePath("CardBaseState")
+
+[node name="CardBaseState" type="Node" parent="CardStateMachine"]
+script = ExtResource("3_bo8ci")
+
+[node name="CardClickedState" type="Node" parent="CardStateMachine"]
+script = ExtResource("4_pfccq")
+state = 1
+
+[node name="CardDraggingState" type="Node" parent="CardStateMachine"]
+script = ExtResource("5_fsj21")
+state = 2
+
+[node name="CardReleasedState" type="Node" parent="CardStateMachine"]
+script = ExtResource("6_04ofv")
+state = 4
+
+[node name="CardAimingState" type="Node" parent="CardStateMachine"]
+script = ExtResource("8_22bd3")
+state = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="DropPointDetector" to="." method="_on_drop_point_detector_area_entered"]
+[connection signal="area_exited" from="DropPointDetector" to="." method="_on_drop_point_detector_area_exited"]

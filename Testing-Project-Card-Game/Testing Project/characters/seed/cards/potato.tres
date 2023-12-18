@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://dsouh2swle085"]
+
+[ext_resource type="Script" path="res://custom_resource/card.gd" id="1_kskem"]
+[ext_resource type="Texture2D" uid="uid://dcpfyjqwq57hc" path="res://Assets/Cards/seed/seed_2.png" id="1_r6m7a"]
+
+[resource]
+script = ExtResource("1_kskem")
+id = "seed"
+type = 0
+target = 0
+target2 = 0
+cost = 1
+image = ExtResource("1_r6m7a")
+tooltip_text = "Potato Seed"

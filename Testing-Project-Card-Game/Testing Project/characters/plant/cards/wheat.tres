@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://bhn38j4h843ea"]
+
+[ext_resource type="Texture2D" uid="uid://du1io0cuj67u6" path="res://Assets/Cards/plant/plant_4.png" id="1_84rxg"]
+[ext_resource type="Script" path="res://custom_resource/card.gd" id="1_whefv"]
+
+[resource]
+script = ExtResource("1_whefv")
+id = "plant_evolve"
+type = 1
+target = 1
+target2 = 3
+cost = 1
+image = ExtResource("1_84rxg")
+tooltip_text = "Wheat Plant"

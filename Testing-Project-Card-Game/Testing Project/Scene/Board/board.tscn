@@ -1,0 +1,146 @@
+[gd_scene load_steps=16 format=3 uid="uid://bgfyov0408wkf"]
+
+[ext_resource type="Texture2D" uid="uid://d2d1ytw68v5nh" path="res://Assets/Sprite-Environment.png" id="1_6cdri"]
+[ext_resource type="PackedScene" uid="uid://dx1rtetervop4" path="res://Scene/Card_UI/card_ui.tscn" id="2_8pk6g"]
+[ext_resource type="Script" path="res://Scene/UI/hand.gd" id="2_yq32l"]
+[ext_resource type="PackedScene" uid="uid://c8wa8y8tla57h" path="res://Scene/card_target_selector/card_target_selector.tscn" id="3_75ygc"]
+[ext_resource type="Texture2D" uid="uid://dmlr3e27ja5ql" path="res://Assets/Cards/seed/seed_back_card.png" id="3_vruf2"]
+[ext_resource type="Texture2D" uid="uid://dkjhhmveuvkx0" path="res://Assets/Cards/plant/plant_back_card.png" id="4_4y84b"]
+[ext_resource type="Resource" uid="uid://i5q6nye1bwgk" path="res://characters/seed/cards/seed_deck.tres" id="7_gvdyc"]
+[ext_resource type="Resource" uid="uid://cmq7hdg3flcbo" path="res://characters/plant/cards/plant_deck.tres" id="8_morys"]
+[ext_resource type="Script" path="res://Scene/Board_Grid/token.gd" id="9_axd1l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tn3hd"]
+size = Vector2(514.375, 507)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vfhep"]
+texture = ExtResource("1_6cdri")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nuhcw"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_vfhep")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gheqc"]
+size = Vector2(511, 511)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hatj6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0l6i"]
+atlas = SubResource("CompressedTexture2D_hatj6")
+region = Rect2(0, 0, 64, 64)
+
+[node name="Board" type="Node"]
+
+[node name="CardDropArea" type="Area2D" parent="."]
+position = Vector2(3, -50)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
+position = Vector2(957, 461)
+shape = SubResource("RectangleShape2D_tn3hd")
+one_way_collision_margin = 64.0
+debug_color = Color(0, 0.6, 0.701961, 0.196078)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="TileMap" type="TileMap" parent="Area2D"]
+position = Vector2(0, -128)
+tile_set = SubResource("TileSet_nuhcw")
+cell_quadrant_size = 64
+format = 2
+layer_0/tile_data = PackedInt32Array(262155, 0, 0, 327691, 0, 1, 393227, 0, 0, 458763, 0, 1, 262156, 65536, 0, 327692, 65536, 1, 393228, 65536, 0, 458764, 65536, 1, 262157, 0, 0, 327693, 0, 1, 393229, 0, 0, 458765, 0, 1, 262158, 65536, 0, 327694, 65536, 1, 393230, 65536, 0, 458766, 65536, 1, 262159, 0, 0, 327695, 0, 1, 393231, 0, 0, 458767, 0, 1, 262160, 65536, 0, 327696, 65536, 1, 393232, 65536, 0, 458768, 65536, 1, 262161, 0, 0, 327697, 0, 1, 393233, 0, 0, 458769, 0, 1, 262162, 65536, 0, 327698, 65536, 1, 393234, 65536, 0, 458770, 65536, 1, 524299, 0, 0, 589835, 0, 1, 655371, 0, 0, 720907, 0, 1, 524300, 65536, 0, 589836, 65536, 1, 655372, 65536, 0, 720908, 65536, 1, 524301, 0, 0, 589837, 0, 1, 655373, 0, 0, 720909, 0, 1, 524302, 65536, 0, 589838, 65536, 1, 655374, 65536, 0, 720910, 65536, 1, 524303, 0, 0, 589839, 0, 1, 655375, 0, 0, 720911, 0, 1, 524304, 65536, 0, 589840, 65536, 1, 655376, 65536, 0, 720912, 65536, 1, 524305, 0, 0, 589841, 0, 1, 655377, 0, 0, 720913, 0, 1, 524306, 65536, 0, 589842, 65536, 1, 655378, 65536, 0, 720914, 65536, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(961.5, 384.5)
+shape = SubResource("RectangleShape2D_gheqc")
+
+[node name="CardTargetSelector" parent="." instance=ExtResource("3_75ygc")]
+
+[node name="DrawPileSeed" type="TextureButton" parent="."]
+offset_left = 110.0
+offset_top = 490.0
+offset_right = 766.0
+offset_bottom = 1474.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("3_vruf2")
+texture_pressed = ExtResource("3_vruf2")
+texture_hover = ExtResource("3_vruf2")
+texture_disabled = ExtResource("3_vruf2")
+texture_focused = ExtResource("3_vruf2")
+
+[node name="DrawPilePlant" type="TextureButton" parent="."]
+offset_left = 114.0
+offset_top = 248.0
+offset_right = 770.0
+offset_bottom = 1232.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("4_4y84b")
+texture_pressed = ExtResource("4_4y84b")
+texture_hover = ExtResource("4_4y84b")
+texture_disabled = ExtResource("4_4y84b")
+texture_focused = ExtResource("4_4y84b")
+stretch_mode = 0
+
+[node name="BoardUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+rotation = 0.00872665
+transform = Transform2D(0.999962, 0.00872654, -0.00872654, 0.999962, 0, 0)
+
+[node name="Hand" type="HBoxContainer" parent="BoardUI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -407.0
+offset_top = -266.0
+offset_right = 400.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_constants/separation = -40
+alignment = 1
+script = ExtResource("2_yq32l")
+
+[node name="CardUI" parent="BoardUI/Hand" instance=ExtResource("2_8pk6g")]
+layout_mode = 2
+size_flags_horizontal = 1
+card = ExtResource("7_gvdyc")
+
+[node name="CardUI2" parent="BoardUI/Hand" instance=ExtResource("2_8pk6g")]
+layout_mode = 2
+card = ExtResource("7_gvdyc")
+
+[node name="CardUI3" parent="BoardUI/Hand" instance=ExtResource("2_8pk6g")]
+layout_mode = 2
+card = ExtResource("7_gvdyc")
+
+[node name="CardUI4" parent="BoardUI/Hand" instance=ExtResource("2_8pk6g")]
+layout_mode = 2
+card = ExtResource("8_morys")
+
+[node name="CardUI5" parent="BoardUI/Hand" instance=ExtResource("2_8pk6g")]
+layout_mode = 2
+card = ExtResource("8_morys")
+
+[node name="CardUI6" parent="BoardUI/Hand" instance=ExtResource("2_8pk6g")]
+layout_mode = 2
+card = ExtResource("8_morys")
+
+[node name="Token2" type="Sprite2D" parent="."]
+position = Vector2(928, 416)
+texture = SubResource("AtlasTexture_g0l6i")
+script = ExtResource("9_axd1l")
+
+[connection signal="area_entered" from="CardDropArea" to="." method="_on_card_drop_area_area_entered"]
+[connection signal="area_exited" from="CardDropArea" to="." method="_on_card_drop_area_area_exited"]
+[connection signal="area_shape_entered" from="CardDropArea" to="." method="_on_card_drop_area_area_shape_entered"]
+[connection signal="pressed" from="DrawPileSeed" to="BoardUI/Hand" method="_on_draw_pile_seed_pressed"]
+[connection signal="pressed" from="DrawPilePlant" to="BoardUI/Hand" method="_on_draw_pile_plant_pressed"]

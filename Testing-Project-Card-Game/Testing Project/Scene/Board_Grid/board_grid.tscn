@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://drkoxasvwqsst"]
+
+[ext_resource type="Script" path="res://Scene/Board_Grid/board_grid.gd" id="1_amywk"]
+[ext_resource type="Script" path="res://Scene/Board_Grid/token.gd" id="3_82jnw"]
+
+[sub_resource type="TileSet" id="TileSet_uue3s"]
+tile_size = Vector2i(64, 64)
+custom_data_layer_0/name = "placeable"
+custom_data_layer_0/type = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hatj6"]
+load_path = "res://.godot/imported/seed_0.png-1ff591165c56242469fe4adb63bddcdf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bimw1"]
+atlas = SubResource("CompressedTexture2D_hatj6")
+region = Rect2(0, 0, 64, 64)
+
+[node name="BoardGrid" type="Node2D"]
+script = ExtResource("1_amywk")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_uue3s")
+cell_quadrant_size = 64
+format = 2
+layer_0/tile_data = PackedInt32Array(262155, 1, 0, 327691, 1, 0, 393227, 1, 0, 458763, 1, 0, 262156, 1, 0, 327692, 1, 0, 393228, 1, 0, 458764, 1, 0, 262157, 1, 0, 327693, 1, 0, 393229, 1, 0, 458765, 1, 0, 262158, 1, 0, 327694, 1, 0, 393230, 1, 0, 458766, 1, 0, 262159, 65537, 0, 327695, 65537, 0, 393231, 65537, 0, 458767, 65537, 0, 262160, 65537, 0, 327696, 65537, 0, 393232, 65537, 0, 458768, 65537, 0, 262161, 65537, 0, 327697, 65537, 0, 393233, 65537, 0, 458769, 65537, 0, 262162, 65537, 0, 327698, 65537, 0, 393234, 65537, 0, 458770, 65537, 0, 524299, 1, 1, 589835, 1, 1, 655371, 1, 1, 720907, 1, 1, 524300, 1, 1, 589836, 1, 1, 655372, 1, 1, 720908, 1, 1, 524301, 1, 1, 589837, 1, 1, 655373, 1, 1, 720909, 1, 1, 524302, 1, 1, 589838, 1, 1, 655374, 1, 1, 720910, 1, 1, 524303, 65537, 1, 589839, 65537, 1, 655375, 65537, 1, 720911, 65537, 1, 524304, 65537, 1, 589840, 65537, 1, 655376, 65537, 1, 720912, 65537, 1, 524305, 65537, 1, 589841, 65537, 1, 655377, 65537, 1, 720913, 65537, 1, 524306, 65537, 1, 589842, 65537, 1, 655378, 65537, 1, 720914, 65537, 1)
+
+[node name="Token" type="Sprite2D" parent="."]
+position = Vector2(927, 478)
+texture = SubResource("AtlasTexture_bimw1")
+script = ExtResource("3_82jnw")

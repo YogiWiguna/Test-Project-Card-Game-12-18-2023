@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardPile" load_steps=7 format=3 uid="uid://cxykxmrkyxmbc"]
+
+[ext_resource type="Resource" uid="uid://bymccgbvlvo46" path="res://characters/seed/cards/bean.tres" id="1_c7snd"]
+[ext_resource type="Script" path="res://custom_resource/card_pile.gd" id="1_ty2hn"]
+[ext_resource type="Resource" uid="uid://drxhbrlx7le2y" path="res://characters/seed/cards/corn.tres" id="2_lwt06"]
+[ext_resource type="Resource" uid="uid://dsouh2swle085" path="res://characters/seed/cards/potato.tres" id="3_um46e"]
+[ext_resource type="Resource" uid="uid://cmqecjaijuyl4" path="res://characters/seed/cards/tomato.tres" id="4_xlmwf"]
+[ext_resource type="Resource" uid="uid://c6tro7m31y1xs" path="res://characters/seed/cards/wheat.tres" id="5_huo33"]
+
+[resource]
+script = ExtResource("1_ty2hn")
+cards = Array[Resource("res://custom_resource/card.gd")]([ExtResource("1_c7snd"), ExtResource("1_c7snd"), ExtResource("1_c7snd"), ExtResource("1_c7snd"), ExtResource("1_c7snd"), ExtResource("2_lwt06"), ExtResource("2_lwt06"), ExtResource("2_lwt06"), ExtResource("2_lwt06"), ExtResource("2_lwt06"), ExtResource("3_um46e"), ExtResource("3_um46e"), ExtResource("3_um46e"), ExtResource("3_um46e"), ExtResource("3_um46e"), ExtResource("4_xlmwf"), ExtResource("4_xlmwf"), ExtResource("4_xlmwf"), ExtResource("4_xlmwf"), ExtResource("4_xlmwf"), ExtResource("5_huo33"), ExtResource("5_huo33"), ExtResource("5_huo33"), ExtResource("5_huo33"), ExtResource("5_huo33")])
