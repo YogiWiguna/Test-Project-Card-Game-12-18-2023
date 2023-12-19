@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://vj2gokildath"]
+
+[ext_resource type="Texture2D" uid="uid://d2d1ytw68v5nh" path="res://Assets/Sprite-Environment.png" id="1_ervj0"]
+[ext_resource type="Script" path="res://tile_map.gd" id="2_aodki"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jg4nu"]
+texture = ExtResource("1_ervj0")
+texture_region_size = Vector2i(64, 64)
+0:0/next_alternative_id = 5
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/modulate = Color(0.666667, 0, 0.027451, 1)
+0:0/2 = 2
+0:0/2/modulate = Color(0.964706, 0.454902, 0.00784314, 1)
+0:0/3 = 3
+0:0/3/modulate = Color(0, 0.0431373, 0.733333, 1)
+1:0/next_alternative_id = 2
+1:0/0 = 0
+1:0/1 = 1
+1:0/1/modulate = Color(1, 0, 1, 1)
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q5uph"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_jg4nu")
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_q5uph")
+format = 2
+layer_0/tile_data = PackedInt32Array(327689, 0, 0, 393225, 0, 1, 327690, 65536, 0, 393226, 65536, 1, 458761, 0, 0, 524297, 0, 1, 458762, 65536, 0, 524298, 65536, 1, 589833, 0, 0, 655369, 0, 1, 589834, 65536, 0, 655370, 65536, 1, 720905, 0, 0, 786441, 0, 1, 720906, 65536, 0, 786442, 65536, 1, 327691, 0, 0, 393227, 0, 1, 327692, 65536, 0, 393228, 65536, 1, 458763, 0, 0, 524299, 0, 1, 458764, 65536, 0, 524300, 65536, 1, 589835, 0, 0, 655371, 0, 1, 589836, 65536, 0, 655372, 65536, 1, 720907, 0, 0, 786443, 0, 1, 720908, 65536, 0, 786444, 65536, 1, 327693, 0, 0, 393229, 0, 1, 327694, 65536, 0, 393230, 65536, 1, 458765, 0, 0, 524301, 0, 1, 458766, 65536, 0, 524302, 65536, 1, 589837, 0, 0, 655373, 0, 1, 589838, 65536, 0, 655374, 65536, 1, 720909, 0, 0, 786445, 0, 1, 720910, 65536, 0, 786446, 65536, 1, 327695, 0, 0, 393231, 0, 1, 327696, 65536, 0, 393232, 65536, 1, 458767, 0, 0, 524303, 0, 1, 458768, 65536, 0, 524304, 65536, 1, 589839, 0, 0, 655375, 0, 1, 589840, 65536, 0, 655376, 65536, 1, 720911, 0, 0, 786447, 0, 1, 720912, 65536, 0, 786448, 65536, 1)
+script = ExtResource("2_aodki")
