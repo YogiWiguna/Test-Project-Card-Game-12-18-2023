@@ -25,7 +25,7 @@ func _input(event):
 				var current_atlas_coords_above = get_cell_atlas_coords(main_layer,tile_above)
 				var current_tile_above_alt = get_cell_alternative_tile(main_layer, tile_above)
 				set_cell(main_layer, tile_above, main_atlas_id, current_atlas_coords_above, (current_tile_above_alt + 1) % number_of_atlas_for_clicked)
-#				print("tile above", tile_above)
+				print("tile above", tile_above)
 				
 				### Tile Below the current tile is clicked
 				var tile_below = pos_clicked - Vector2i(0, -1)
