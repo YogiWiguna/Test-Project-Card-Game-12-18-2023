@@ -71,7 +71,7 @@ func _input(event):
 	
 	## If the left mouse is not pressed return to the next line code
 	if event.is_action_pressed("left_mouse") == false:
-		return
+		return "not preesed"
 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		## Checking the click of the sprite or token , if it's clicked on the token set is_moving to true
