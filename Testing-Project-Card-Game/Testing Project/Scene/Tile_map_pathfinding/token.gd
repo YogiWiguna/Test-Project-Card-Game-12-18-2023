@@ -13,6 +13,24 @@ var is_pressed = false
 var is_move = false
 var target_position
 
+## Change the tile color
+var pos_clicked
+var tile_above
+var current_atlas_coords_above
+var current_tile_above_alt
+var tile_below
+var current_atlas_coords_below
+var current_tile_below_alt
+var tile_left
+var current_atlas_coords_left
+var current_tile_left_alt
+var tile_right
+var current_atlas_coords_right
+var current_tile_right_alt
+
+
+
+
 func _ready():
 	## Make a initial AstarGrid2D new for the first time
 	astar_grid = AStarGrid2D.new()
@@ -77,36 +95,36 @@ func _input(event):
 		## Checking the click of the sprite or token , if it's clicked on the token set is_moving to true
 		if sprite_2d.get_rect().has_point(to_local(event.position)):
 			is_move = true
-			var pos_clicked = tile_map.local_to_map(global_position)
+			pos_clicked = tile_map.local_to_map(global_position)
 #			var current = tile_map.get_cell_atlas_coords()
 			var current_atlas_coords = tile_map.get_cell_atlas_coords(main_layer,pos_clicked)
 			var number_of_atlas_for_clicked = tile_map.tile_set.get_source(main_atlas_id).get_alternative_tiles_count(current_atlas_coords)
 
 			## Tile Above the current tile is clicked
-			var tile_above = pos_clicked - Vector2i(0, 1) 
-			var current_atlas_coords_above = tile_map.get_cell_atlas_coords(main_layer,tile_above)
-			var current_tile_above_alt = tile_map.get_cell_alternative_tile(main_layer, tile_above)
+			tile_above = pos_clicked - Vector2i(0, 1) 
+			current_atlas_coords_above = tile_map.get_cell_atlas_coords(main_layer,tile_above)
+			current_tile_above_alt = tile_map.get_cell_alternative_tile(main_layer, tile_above)
 			tile_map.set_cell(main_layer, tile_above, main_atlas_id, current_atlas_coords_above, (current_tile_above_alt + 1) % number_of_atlas_for_clicked)
 		#	print("tile above", tile_above)
 	
 			### Tile Below the current tile is clicked
-			var tile_below = pos_clicked - Vector2i(0, -1)
-			var current_atlas_coords_below = tile_map.get_cell_atlas_coords(main_layer,tile_below)
-			var current_tile_below_alt = tile_map.get_cell_alternative_tile(main_layer, tile_below)
+			tile_below = pos_clicked - Vector2i(0, -1)
+			current_atlas_coords_below = tile_map.get_cell_atlas_coords(main_layer,tile_below)
+			current_tile_below_alt = tile_map.get_cell_alternative_tile(main_layer, tile_below)
 			tile_map.set_cell(main_layer, tile_below, main_atlas_id, current_atlas_coords_below, (current_tile_above_alt + 1) % number_of_atlas_for_clicked)
 		#	print("tile below", tile_below)
 			
 			### Tile Left the current tile is clicked
-			var tile_left = pos_clicked - Vector2i(1, 0)
-			var current_atlas_coords_left = tile_map.get_cell_atlas_coords(main_layer,tile_left)
-			var current_tile_left_alt = tile_map.get_cell_alternative_tile(main_layer, tile_left)
+			tile_left = pos_clicked - Vector2i(1, 0)
+			current_atlas_coords_left = tile_map.get_cell_atlas_coords(main_layer,tile_left)
+			current_tile_left_alt = tile_map.get_cell_alternative_tile(main_layer, tile_left)
 			tile_map.set_cell(main_layer, tile_left, main_atlas_id, current_atlas_coords_left, (current_tile_above_alt + 1) % number_of_atlas_for_clicked)
 		#	print("tile left", tile_left)
 			
 			### Tile Right the current tile is clicked
-			var tile_right = pos_clicked - Vector2i(-1, 0)
-			var current_atlas_coords_right = tile_map.get_cell_atlas_coords(main_layer,tile_right)
-			var current_tile_right_alt = tile_map.get_cell_alternative_tile(main_layer, tile_right)
+			tile_right = pos_clicked - Vector2i(-1, 0)
+			current_atlas_coords_right = tile_map.get_cell_atlas_coords(main_layer,tile_right)
+			current_tile_right_alt = tile_map.get_cell_alternative_tile(main_layer, tile_right)
 			tile_map.set_cell(main_layer, tile_right, main_atlas_id, current_atlas_coords_right, (current_tile_above_alt + 1) % number_of_atlas_for_clicked)
 		#	print("tile right", tile_right)
 		## If not pressed the token set is_pressed to false , just make sure the physic process didnt run 
@@ -187,6 +205,15 @@ func _physics_process(delta):
 #		print(target_position)
 		## Move token to the target and the speed
 		global_position = global_position.move_toward(target_position, 2)
+		
+		#Above change tile
+		tile_map.set_cell(0,tile_above, main_atlas_id,current_atlas_coords_above, 0 )
+		#Below change tile
+		tile_map.set_cell(0,tile_below, main_atlas_id,current_atlas_coords_below, 0 )
+		#Left change tile
+		tile_map.set_cell(0,tile_left, main_atlas_id,current_atlas_coords_left, 0 )
+		#Right change tile
+		tile_map.set_cell(0,tile_right, main_atlas_id,current_atlas_coords_right, 0 )
 		
 #	print(is_move, is_pressed)
 	

@@ -50,13 +50,14 @@ func move():
 	path.pop_front()
 	
 #	print(path.size())
-#	if path.size() == 1:
-#		print("i have arrive")
-#		return
+	if path.size() == 1:
+		print("first tile")
+		return
 	
 	if path.size() == 3:
 		print("thrid tile")
-#
+		return
+##
 	if path.size() == 2:
 		print("second tile")
 		return
