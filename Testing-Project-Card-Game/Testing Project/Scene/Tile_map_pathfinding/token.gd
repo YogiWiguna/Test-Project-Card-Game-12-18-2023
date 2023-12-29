@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 
 @onready var tile_map = $"../TileMap"
@@ -32,6 +32,7 @@ var current_tile_right_alt
 
 
 func _ready():
+	
 	## Make a initial AstarGrid2D new for the first time
 	astar_grid = AStarGrid2D.new()
 	
@@ -51,7 +52,7 @@ func _ready():
 	
 #	print(current_id_path)
 #	print(tile_map.get_used_rect())
-	print(astar_grid.region)
+#	print(astar_grid.region)
 	
 	## Checking the tile data is walkable or not 
 	## tile_map.get_used_rect().size.x is for checking the size of the tile map that applied on the 2D scene
@@ -83,6 +84,7 @@ func _ready():
 			if tile_data == null or tile_data.get_custom_data("walkable") == false:
 				## If true the astar_grid will disabled the pathfinding going to the tile_data null or the tile data is not "walkable"
 				astar_grid.set_point_solid(tile_position)
+	
 
 
 func _input(event):
@@ -151,7 +153,7 @@ func _input(event):
 		tile_map.local_to_map(global_position),
 		tile_map.local_to_map(get_global_mouse_position())
 	).slice(1) ## Slice the first position from first from_id
-	print(id_path.size())
+#	print(id_path.size())
 #	print(tile_map.local_to_map((global_position)))
 	
 	## If id_path size equal to 1 , the value of is_moving is true because the token is already pressed
@@ -230,3 +232,8 @@ func _physics_process(delta):
 #			is_moving = false
 	
 #	print (current_id_path)
+
+
+
+func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	queue_free()

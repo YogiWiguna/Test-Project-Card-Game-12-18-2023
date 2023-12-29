@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnlcc02dufqka"]
+
+[ext_resource type="Script" path="res://Scene/Tile_map_pathfinding/animal.gd" id="1_m7xfj"]
+[ext_resource type="Texture2D" uid="uid://bn43kfo65yhah" path="res://Assets/Token/Seed/seed_0.png" id="2_uesuk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wpx4"]
+atlas = ExtResource("2_uesuk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ge5b3"]
+radius = 27.2947
+
+[node name="Animal" type="Area2D"]
+position = Vector2(800, 544)
+script = ExtResource("1_m7xfj")
+
+[node name="animal" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_7wpx4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_ge5b3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,6 @@
-extends Node2D
+extends Area2D
+
+@export var health : int
 
 @onready var tile_map = $"../TileMap"
 @onready var token = $"../Token"
@@ -53,20 +55,21 @@ func move():
 	if path.size() == 1:
 		print("first tile")
 		return
-	
-	if path.size() == 3:
-		print("thrid tile")
-		return
-##
-	if path.size() == 2:
-		print("second tile")
-		return
+#
+#	if path.size() == 3:
+#		print("thrid tile")
+#		return
+###
+#	if path.size() == 2:
+##		print("second tile")
+#		return
 #	else : 
 #		path.clear()
 	
-	print(path.size())
+#	print(path.size())
 	if path.is_empty():
-		print("cant'find path")
+#		print("cant'find path")
+#		queue_free()
 		return
 	
 	
@@ -91,3 +94,7 @@ func _physics_process(delta):
 		
 		## Set is_moving is false 
 		is_moving = false
+
+
+func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	queue_free()
