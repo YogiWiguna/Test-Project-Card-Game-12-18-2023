@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfo7yc4fmr1tt"]
+[gd_scene load_steps=3 format=3 uid="uid://bfo7yc4fmr1tt"]
 
 [ext_resource type="Script" path="res://Scene/Dice/dice.gd" id="1_pke16"]
+[ext_resource type="PackedScene" uid="uid://cnqca6yuc0iwl" path="res://Scene/health.tscn" id="2_2dpkm"]
 
 [node name="Dice" type="Control"]
 layout_mode = 3
@@ -9,19 +10,19 @@ script = ExtResource("1_pke16")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 422.0
-offset_top = 434.0
-offset_right = 660.0
-offset_bottom = 525.0
+offset_left = 95.0
+offset_top = 904.0
+offset_right = 333.0
+offset_bottom = 995.0
 theme_override_font_sizes/font_size = 40
 text = "Roll Dice"
 
 [node name="Dice" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 766.0
-offset_top = 414.0
-offset_right = 902.0
-offset_bottom = 534.0
+offset_left = 144.0
+offset_top = 760.0
+offset_right = 280.0
+offset_bottom = 880.0
 
 [node name="Label" type="Label" parent="Dice"]
 layout_mode = 0
@@ -34,5 +35,7 @@ theme_override_font_sizes/font_size = 40
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Health" parent="." instance=ExtResource("2_2dpkm")]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

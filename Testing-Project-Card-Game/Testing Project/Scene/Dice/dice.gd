@@ -15,6 +15,7 @@ func _process(delta):
 
 func _on_button_pressed():
 	rng.randomize()
-	var dice = rng.randi_range(1,12)
+	var dice = rng.randi_range(1,6)
 	label.text = str(dice) 
+	Global.dice_rolled.emit(dice)
 	print(dice)

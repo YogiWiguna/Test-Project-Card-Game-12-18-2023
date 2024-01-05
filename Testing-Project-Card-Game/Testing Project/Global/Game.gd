@@ -15,7 +15,7 @@ signal card_aim_ended(card_ui: CardUI)
 
 signal deck_pressed
 
-
+signal dice_rolled
 func pause():
 	Engine.time_scale = 0
 

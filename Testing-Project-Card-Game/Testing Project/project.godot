@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Global/Game.gd"
-FireBase="*res://Global/FireBase.gd"
 
 [display]
 
