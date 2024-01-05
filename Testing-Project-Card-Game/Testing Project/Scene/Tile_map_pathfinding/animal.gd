@@ -53,7 +53,7 @@ func move():
 	
 #	print(path.size())
 	if path.size() == 1:
-		print("first tile")
+#		print("first tile")
 		return
 #
 #	if path.size() == 3:
@@ -68,7 +68,7 @@ func move():
 	
 #	print(path.size())
 	if path.is_empty():
-#		print("cant'find path")
+		print("cant'find path")
 #		queue_free()
 		return
 	
